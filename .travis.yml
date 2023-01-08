@@ -13,3 +13,8 @@ after_success:
   - docker build -t zoominggg/multi-nginx ./nginx
   - docker build -t zoominggg/multi-server ./server
   - docker build -t zoominggg/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push zoominggg/multi-client
+  - docker push zoominggg/multi-nginx
+  - docker push zoominggg/multi-server
+  - docker push zoominggg/multi-worker
